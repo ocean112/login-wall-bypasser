@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Login Wall Bypasser</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:300px;font-family:'Segoe UI',sans-serif;background:#0f0f1a;color:#e0e0f0}
+.hdr{display:flex;align-items:center;gap:10px;padding:13px 14px 10px;border-bottom:1px solid #1e1e36}
+.logo{font-size:22px}.ttl{font-size:13px;font-weight:700;color:#a78bfa}.sub{font-size:10px;color:#6b7280}
+.tabs{display:flex;border-bottom:1px solid #1e1e36}
+.tab{flex:1;padding:8px 2px;font-size:11px;text-align:center;cursor:pointer;color:#6b7280;border-bottom:2px solid transparent;transition:.2s}
+.tab.on{color:#a78bfa;border-bottom-color:#7c3aed}.tab:hover:not(.on){color:#c4b5fd}
+.pnl{display:none;padding:12px 13px}.pnl.on{display:block}
+.box{background:#1a1a2e;border:1px solid #2d2d4e;border-radius:9px;padding:11px;text-align:center;margin-bottom:9px}
+.ico{font-size:24px;margin-bottom:3px}.tx{font-size:12px;font-weight:600;color:#c4b5fd}.sx{font-size:10px;color:#6b7280;margin-top:2px}
+.bdg{display:inline-block;background:#7c3aed;color:#fff;border-radius:20px;padding:2px 11px;font-size:11px;font-weight:700;margin-top:5px}
+.btn{width:100%;padding:9px;border:none;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;margin-bottom:6px;transition:.15s}
+.p{background:linear-gradient(135deg,#7c3aed,#a78bfa);color:#fff}.p:hover{filter:brightness(1.1)}
+.s{background:#1a1a2e;color:#a78bfa;border:1px solid #2d2d4e}.s:hover{background:#2d2d4e}
+.d{background:#1a1a2e;color:#f87171;border:1px solid #2d2d4e}.d:hover{background:#2d1a1a}
+.arc{background:#1a1a2e;border:1px solid #2d2d4e;border-radius:7px;padding:8px;margin-bottom:6px}
+.arc-lbl{font-size:10px;color:#6b7280;margin-bottom:6px}
+.arc-row{display:flex;gap:5px}.arc-row .btn{margin:0;font-size:11px}
+.div{border:none;border-top:1px solid #1e1e36;margin:8px 0}
+.slbl{font-size:10px;color:#6b7280;font-weight:700;margin-bottom:6px}
+.trow{display:flex;align-items:center;justify-content:space-between;background:#1a1a2e;border:1px solid #2d2d4e;border-radius:7px;padding:7px 10px;margin-bottom:5px}
+.tlbl{font-size:11px;color:#c4b5fd}
+.tgl{position:relative;width:32px;height:17px}
+.tgl input{opacity:0;width:0;height:0}
+.sl{position:absolute;inset:0;background:#374151;border-radius:17px;cursor:pointer;transition:.25s}
+.sl:before{content:'';position:absolute;width:12px;height:12px;left:2px;bottom:2px;background:#fff;border-radius:50%;transition:.25s}
+input:checked+.sl{background:#7c3aed}input:checked+.sl:before{transform:translateX(15px)}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:9px}
+.scard{background:#1a1a2e;border:1px solid #2d2d4e;border-radius:7px;padding:9px;text-align:center}
+.sn{font-size:20px;font-weight:700;color:#a78bfa}.sl2{font-size:10px;color:#6b7280;margin-top:2px}
+.lst{max-height:180px;overflow-y:auto}
+.li{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:#1a1a2e;border:1px solid #2d2d4e;border-radius:6px;margin-bottom:4px;font-size:11px}
+.lh{color:#c4b5fd;font-weight:500}.lb{background:#7c3aed;color:#fff;border-radius:10px;padding:1px 7px;font-size:10px}
+.ld{font-size:10px;color:#6b7280}.lr{color:#f87171}
+.emp{text-align:center;color:#6b7280;font-size:11px;padding:16px 0}
+.lsec{margin-bottom:11px}.ltl{font-size:11px;font-weight:700;color:#a78bfa;margin-bottom:4px}
+.ldesc{font-size:10px;color:#6b7280;margin-bottom:5px}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:5px;min-height:20px}
+.tag{display:inline-flex;align-items:center;gap:3px;background:#1a1a2e;border:1px solid #2d2d4e;border-radius:18px;padding:2px 9px;font-size:11px;color:#c4b5fd}
+.tx2{cursor:pointer;color:#6b7280;font-size:13px}.tx2:hover{color:#f87171}
+.arow{display:flex;gap:5px}
+.ai{flex:1;background:#1a1a2e;border:1px solid #2d2d4e;border-radius:5px;padding:5px 8px;color:#e0e0f0;font-size:11px;outline:none}
+.ai:focus{border-color:#7c3aed}.ai::placeholder{color:#4b5563}
+.ab{background:#7c3aed;color:#fff;border:none;border-radius:5px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer}
+.ab:hover{background:#6d28d9}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:#2d2d4e;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="logo">🔓</div>
+  <div><div class="ttl">Login Wall Bypasser</div><div class="sub">v7.0 · Browse freely</div></div>
+</div>
+<div class="tabs">
+  <div class="tab on" data-t="home">🏠 Home</div>
+  <div class="tab" data-t="stats">📊 Stats</div>
+  <div class="tab" data-t="blocked">🛡️ Blocked</div>
+  <div class="tab" data-t="lists">⚙️ Lists</div>
+</div>
+
+<!-- HOME -->
+<div class="pnl on" id="p-home">
+  <div class="box">
+    <div class="ico" id="ico">🔍</div>
+    <div class="tx"  id="tx">Checking page...</div>
+    <div class="sx"  id="sx">Looking for walls & popups</div>
+    <div class="bdg" id="bdg" style="display:none">0</div>
+  </div>
+  <button class="btn p" id="scanBtn">⚡ Scan & Remove Now</button>
+  <button class="btn s" id="reloadBtn">🔄 Reload Page</button>
+  <div class="arc">
+    <div class="arc-lbl">🌐 Can't bypass? View cached version:</div>
+    <div class="arc-row">
+      <button class="btn s" id="archBtn">📦 Archive.org</button>
+      <button class="btn s" id="cacheBtn">🔍 Google Cache</button>
+    </div>
+  </div>
+  <div class="div"></div>
+  <div class="slbl">SETTINGS</div>
+  <div class="trow"><span class="tlbl">🤖 Auto-bypass on load</span><label class="tgl"><input type="checkbox" id="tAuto" checked><span class="sl"></span></label></div>
+  <div class="trow"><span class="tlbl">🍪 Block cookie banners</span><label class="tgl"><input type="checkbox" id="tCookie" checked><span class="sl"></span></label></div>
+  <div class="trow"><span class="tlbl">🔔 Block notification prompts</span><label class="tgl"><input type="checkbox" id="tNotif" checked><span class="sl"></span></label></div>
+  <div class="trow"><span class="tlbl">📧 Block newsletter popups</span><label class="tgl"><input type="checkbox" id="tNews" checked><span class="sl"></span></label></div>
+  <div class="trow"><span class="tlbl">📱 Block app download banners</span><label class="tgl"><input type="checkbox" id="tApp" checked><span class="sl"></span></label></div>
+  <div class="trow"><span class="tlbl">🛡️ Block malicious redirects</span><label class="tgl"><input type="checkbox" id="tRedir" checked><span class="sl"></span></label></div>
+</div>
+
+<!-- STATS -->
+<div class="pnl" id="p-stats">
+  <div class="sgrid">
+    <div class="scard"><div class="sn" id="stW">0</div><div class="sl2">Walls Removed</div></div>
+    <div class="scard"><div class="sn" id="stS">0</div><div class="sl2">Sites Bypassed</div></div>
+  </div>
+  <div class="slbl">RECENT SITES</div>
+  <div class="lst" id="hList"><div class="emp">No walls removed yet.</div></div>
+  <div class="div"></div>
+  <button class="btn d" id="clrH">🗑️ Clear History</button>
+</div>
+
+<!-- BLOCKED -->
+<div class="pnl" id="p-blocked">
+  <div class="sgrid">
+    <div class="scard"><div class="sn" id="stR">0</div><div class="sl2">Redirects Blocked</div></div>
+    <div class="scard"><div class="sn" id="stRS">0</div><div class="sl2">Unique Domains</div></div>
+  </div>
+  <div class="slbl">RECENT BLOCKED</div>
+  <div class="lst" id="rList"><div class="emp">No redirects blocked yet.</div></div>
+  <div class="div"></div>
+  <button class="btn d" id="clrR">🗑️ Clear Log</button>
+</div>
+
+<!-- LISTS -->
+<div class="pnl" id="p-lists">
+  <div class="lsec">
+    <div class="ltl">✅ Whitelist <span style="font-weight:400;color:#6b7280">(never bypass)</span></div>
+    <div class="ldesc">Extension does nothing on these sites.</div>
+    <div class="tags" id="wlT"></div>
+    <div class="arow"><input class="ai" id="wlI" placeholder="e.g. reddit.com"><button class="ab" id="wlA">+ Add</button></div>
+  </div>
+  <div class="div"></div>
+  <div class="lsec">
+    <div class="ltl">🚫 Blacklist <span style="font-weight:400;color:#6b7280">(always bypass)</span></div>
+    <div class="ldesc">Bypass aggressively even if auto is off.</div>
+    <div class="tags" id="blT"></div>
+    <div class="arow"><input class="ai" id="blI" placeholder="e.g. medium.com"><button class="ab" id="blA">+ Add</button></div>
+  </div>
+  <div class="div"></div>
+  <button class="btn s" id="addWL" style="margin-bottom:4px;font-size:11px">✅ Whitelist Current Site</button>
+  <button class="btn s" id="addBL" style="font-size:11px">🚫 Blacklist Current Site</button>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
